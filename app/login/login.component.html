@@ -1,0 +1,26 @@
+<div class="container">
+    <h1>User Login</h1>
+    
+    <form #userForm="ngForm" (ngSubmit)="onSubmit(userForm)">
+        <div *ngIf="user_name.invalid">
+            <div class="alert">Error: User Name is required</div>
+        </div>
+        <div *ngIf="user_password.invalid">
+            <div class="alert">Error: Password is required</div>
+        </div>
+
+        <div class="form-group">
+            <label>User Name</label>
+            <input required type="text" name="userName" value="" class="form-control" placeholder="User Name" #user_name="ngModel" [(ngModel)]="userSubmitted.name" maxlength="40" minlength="2" pattern="[a-zA-Z0-9 ]*"/>
+        </div>
+
+        <div class="form-group">
+            <label>Password</label>
+            <input required type="text" name="password" value="" class="form-control" placeholder="Password" #user_password="ngModel" [(ngModel)]="userSubmitted.password" pattern="[a-zA-Z0-9 ]*"/>
+        </div>
+
+        <div class="form-group">
+            <input class="btn btn-default" type="submit" name="button" value="Login" [disabled]="!userForm.form.valid"/>
+        </div>
+    </form>
+</div>
